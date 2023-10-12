@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cairo" !important;
+}
+
+:root {
+  --main-color: #62d0b6;
+}
+
+body {
+  direction: rtl;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none!important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--main-color) !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/* Home Style */
+.show-all {
+  padding: 8px 20px;
+  background-color: transparent;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.5s ease-in-out;
+}
+
+.products button {
+  transition: all 0.5s ease-in-out;
+}
+
+.products .card .add-to-cart {
+  padding: 8px 20px;
+  background-color: transparent;
+  color: #333333;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.5s ease-in-out;
+}
+
+.products button:hover,
+.products .add-to-cart:hover,
+.show-all:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.products .card {
+  cursor: pointer;
+}
+
+.products .card img {
+  transition: all 0.5s ease-in-out;
+}
+
+.products .card:hover img {
+  transform: scale(0.8);
+}
+
+.mySwiper.brands .swiper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.MuiPagination-root ul {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.MuiPagination-root ul li svg {
+  font-size: 12px;
+}
+
+.css-be4zwc-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  color: #fff !important;
+  background-color: var(--main-color) !important;
+}
+
+.drop-down-menu_EMFQP {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
+  width: 240px !important;
+  left: 85% !important;
+  top: 30px !important;
+  color: #666666 !important;
+}
+
+.drop-down-menu_EMFQP div {
+  padding: 10px;
+}
+
+.drop-down-menu_EMFQP div:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.drop-down-menu_EMFQP div:not(:last-of-type) {
+  border-bottom: 1px solid var(--main-color);
+}
+
+/* Product Details Page */
+
+.product-gallery {
+  width: 100%;
+  height: 100%;
+}
+
+.product-gallery .swiper {
+  width: 100%;
+  height: 100%;
+  direction: ltr;
+}
+
+.product-gallery .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-gallery .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Client Details */
+
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+  left: 7px !important;
+  right: unset !important;
+}
+
+/* Input Style */
+
+.css-hbt2rw-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: var(--main-color) !important;
+  width: auto;
+}
+
+/* MultiSelect Input */
+
+.multiSelectContainer {
+  text-align: right !important;
+  height: 56px !important;
+}
+
+.searchWrapper {
+  padding: 16.5px 14px !important;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.searchWrapper input {
+  font-size: 1rem;
+  margin-top: 0 !important;
+}
+
+.chip {
+  background: var(--main-color) !important;
+  border-radius: 4px !important;
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+  margin-left: 5px !important;
+}
+
+.highlightOption {
+  background: var(--main-color) !important;
+  color: #fff;
+}
+
+.multiSelectContainer li:hover {
+  background: var(--main-color) !important;
+  color: #fff;
+}
+
+/* Loader Component */
+
+.loader svg {
+  width: 3.25em;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+.loader circle {
+  fill: none;
+  stroke: var(--main-color);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
+/* Admin Add Category */
+
+.select-input svg {
+  left: 7px !important;
+  right: unset !important;
+}
+
+/* Add Product */
+
+.image-item {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+
+.image-item img{
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Any Input Label */
+/* 
+label{
+  left: unset!important;
+  right: 25px;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  padding: 0 25px!important;
+  text-align: right!important;
+} */
+
+
+/*
+label.Mui-focused{
+  right: unset!important;
+} */
+
+
+
+/* SideBar */
+.css-1lcm82m-MuiDrawer-docked {
+  z-index: 2!important;
+}
+
+
+/* Modal Stars */
+
+.modal-stars div{
+  justify-content: center!important;
+}
