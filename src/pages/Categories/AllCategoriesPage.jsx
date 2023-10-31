@@ -1,18 +1,18 @@
 import React from "react";
 import { Box } from "@mui/material";
 import PaginationComponent from "../../components/Utility/PaginationComponent";
-import CategoriesPageContent from "../../components/Categories/CategoriesPageContent";
-import AllCategoryPageHook from "../../Logic/category/AllCategoryPageHook";
+import AllCategoriesPageContent from "../../components/Categories/AllCategoriesPageContent";
+import AllCategoryPageLogic from "./AllCategoryPageLogic";
 
 
 function AllCategoriesPage() {
   
-  let [categories, categoriesStatus, page, getPage] = AllCategoryPageHook()
+  let [categories, categoriesStatus, page, getPage] = AllCategoryPageLogic()
   
   
   return (
     <Box sx={{ minHeight: "calc(100vh - 160px)", my: 5 }}>
-      <CategoriesPageContent
+      <AllCategoriesPageContent
         categories={categories}
         categoriesStatus={categoriesStatus}
       />

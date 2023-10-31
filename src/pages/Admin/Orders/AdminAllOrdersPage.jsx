@@ -1,7 +1,7 @@
 import React from "react";
 import { Box} from "@mui/material";
-import AdminAllOrders from "../../../components/Admin/Orders/AdminAllOrders";
 import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import AdminAllOrders from "../../../components/Admin/Orders/AdminAllOrders/AdminAllOrders/AdminAllOrders";
 
 function AdminAllOrdersPage() {
   return (

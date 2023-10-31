@@ -37,7 +37,7 @@ export const getCategoriesPage = createAsyncThunk(
 //Create Category
 
 export const createCategory = createAsyncThunk(
-  "fetch/post category",
+  "post/category",
   (formData, thunkAPI) => {
     let response = useInsertDataWithImages(
       `/api/v1/categories`,
@@ -51,7 +51,7 @@ export const createCategory = createAsyncThunk(
 //Get Specific Category
 
 export const getSpecificCategory = createAsyncThunk(
-  "fetch/post category",
+  "fetch/category",
   (id, thunkAPI) => {
     let response = useGetData(`/api/v1/categories/${id}`, undefined, thunkAPI);
     return response;

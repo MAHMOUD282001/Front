@@ -53,7 +53,7 @@ export default function AdminSidebar() {
       icon: <Settings />,
       path: "/admin/allCategories",
     },
-    
+
     {
       name: "الماركات",
       icon: <Settings />,
@@ -68,6 +68,7 @@ export default function AdminSidebar() {
       path: "/admin/addSubCategory",
     },
     { name: "اضف منتج", icon: <AddCard />, path: "/admin/addProduct" },
+    { name: "اضف كوبون", icon: <AddCard />, path: "/admin/addCoupon" },
   ];
 
   return (

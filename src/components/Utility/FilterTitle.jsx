@@ -1,6 +1,6 @@
 import { Sort } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useState } from "react";
 import UnopDropdown from "unop-react-dropdown";
 
 function FilterTitle({ title, handleSort }) {

@@ -21,7 +21,7 @@ const initialState = {
   createdBrandStatus: STATUS.IDLE,
   createdBrandError: null,
 
-  //Brand
+  //Get Brand
   specificBrand: {},
   specificBrandStatus: STATUS.IDLE,
   specificBrandError: null,
@@ -43,6 +43,7 @@ const BrandsSlice = createSlice({
     reset: (state) => {
       state.brandsStatus = STATUS.IDLE;
       state.specificBrandStatus = STATUS.IDLE;
+      state.createdBrandStatus = STATUS.IDLE;
       state.deletedBrandStatus = STATUS.IDLE;
       state.updatedBrandStatus = STATUS.IDLE;
     },

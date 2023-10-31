@@ -2,10 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useInsertDataWithImages } from "../../hooks/useInsertData";
 import useGetData from "../../hooks/useGetData";
 import useDeleteData from "../../hooks/useDeleteData";
-import {
-  useUpdateData,
-  useUpdateDataContainsImages,
-} from "../../hooks/useUpdateData";
+import { useUpdateDataContainsImages } from "../../hooks/useUpdateData";
 
 //Get Products
 export const getAllProducts = createAsyncThunk(
@@ -33,6 +30,7 @@ export const getProductsPage = createAsyncThunk(
   }
 );
 
+// Get Products By Search
 export const getAllProductsSearch = createAsyncThunk(
   "fetch/products",
   async (queryString, thunkAPI) => {
@@ -47,10 +45,23 @@ export const getAllProductsSearch = createAsyncThunk(
 
 //Get Specific Products By Category
 export const getSpecificProductsByCategory = createAsyncThunk(
-  "fetch/products",
-  async (id, thunkAPI) => {
+  "fetch/products by category",
+  async ({ id, limit, page }, thunkAPI) => {
     let response = await useGetData(
-      `/api/v1/products?category=${id}`,
+      `/api/v1/products?category=${id}&limit=${limit}&page=${page}`,
+      undefined,
+      thunkAPI
+    );
+    return response;
+  }
+);
+
+//Get Specific Products By Category
+export const getSpecificProductsByBrand = createAsyncThunk(
+  "fetch/products by brand",
+  async ({ id, limit, page }, thunkAPI) => {
+    let response = await useGetData(
+      `/api/v1/products?brand=${id}&limit=${limit}&page=${page}`,
       undefined,
       thunkAPI
     );

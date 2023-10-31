@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import ProductGallery from "./ProductGallery";
-import ProductInfo from "./ProductInfo";
+import ProductInfo from "./ProductInfo/ProductInfo";
 
 function ProductDetails({ product }) {
   return (

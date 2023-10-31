@@ -2,10 +2,9 @@ import React from "react";
 import AdminSidebar from "../../components/Admin/AdminSidebar";
 import { Box } from "@mui/material";
 import UserSidebar from "../../components/User/UserSidebar";
-import UserAllOrders from "../../components/User/AllOrders/UserAllOrders";
+import UserAllOrders from "../../components/User/Orders/UserAllOrders/UserAllOrders";
 
 function UserAllOrdersPage() {
-
   return (
     <Box
       sx={{

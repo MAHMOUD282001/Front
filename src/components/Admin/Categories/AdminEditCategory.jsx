@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Box, Container, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MainTitle from "../../Utility/MainTitle";
 import CommonBtn from "../../Utility/CommonBtn";
 import MainDashboardContent from "../../Utility/MainDashboardContent";
 import { STATUS } from "../../../utils/status";
+import { Container, TextField } from "@material-ui/core";
+
 
 function AdminEditCategory({
   name,
@@ -16,8 +18,8 @@ function AdminEditCategory({
   
   return (
     <MainDashboardContent>
-      <Container>
-        <MainTitle title={"اضف تصنيف"} />
+      <Container maxWidth={"lg"}>
+        <MainTitle title={"تعديل تصنيف"} />
 
         <Typography
           variant="body1"
@@ -61,6 +63,7 @@ function AdminEditCategory({
           <Box sx={{ width: { xs: "100%", sm: "70%" } }}>
             <TextField
               margin="none"
+              variant="outlined"
               fullWidth
               required
               InputLabelProps={{

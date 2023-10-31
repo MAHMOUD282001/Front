@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
-import OrderDetails from "../../../components/Admin/Orders/OrderDetails";
 import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import AdminOrderDetails from "../../../components/Admin/Orders/AdminOrderDetails/AdminOrderDetails/AdminOrderDetails";
 
 function AdminOrderDetailsPage() {
 
@@ -14,7 +14,7 @@ function AdminOrderDetailsPage() {
       }}
     >
       <AdminSidebar />
-      <OrderDetails />
+      <AdminOrderDetails />
     </Box>
   );
 }

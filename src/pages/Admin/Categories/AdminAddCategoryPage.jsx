@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
-import AdminAddCategory from "../../../components/Admin/Categories/AdminAddCategory";
 import AdminSidebar from "../../../components/Admin/AdminSidebar";
+import AdminAddCategory from "../../../components/Admin/Categories/AdminAddCategory/AdminAddCategory";
 
 function AdminAddCategoryPage() {
 

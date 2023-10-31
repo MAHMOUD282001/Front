@@ -16,9 +16,14 @@ const initialState = {
   categoriesError: null,
 
   //Specific Category
-  category: {},
-  categoryStatus: STATUS.IDLE,
-  categoryError: null,
+  specificCategory: {},
+  specificCategoryStatus: STATUS.IDLE,
+  specificCategoryError: null,
+
+  //Specific Category
+  createdCategory: {},
+  createdCategoryStatus: STATUS.IDLE,
+  createdCategoryError: null,
 
   //Deleted Category
   deletedCategoryStatus: STATUS.IDLE,
@@ -36,8 +41,10 @@ const CategoriesSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.categoriesStatus = STATUS.IDLE;
-      state.categoryStatus = STATUS.IDLE;
+      state.specificCategoryStatus = STATUS.IDLE;
+      state.createdCategoryStatus = STATUS.IDLE;
       state.updatedCategoryStatus = STATUS.IDLE;
+      state.deletedCategoryStatus = STATUS.IDLE;
     },
   },
 
@@ -68,31 +75,39 @@ const CategoriesSlice = createSlice({
         }
       );
 
-    //Create Category || Get Specific Category
-    builder.addCase(
-      createCategory.pending || getSpecificCategory.pending,
-      (state) => {
-        state.categoryStatus = STATUS.LOADING;
-        state.category = {};
-        state.categoryError = null;
-      }
-    ),
-      builder.addCase(
-        createCategory.fulfilled || getSpecificCategory.fulfilled,
-        (state, action) => {
-          state.categoryStatus = STATUS.SUCCEEDED;
-          state.category = action.payload;
-          state.categoryError = null;
-        }
-      ),
-      builder.addCase(
-        createCategory.rejected || getSpecificCategory.rejected,
-        (state, action) => {
-          state.categoryStatus = STATUS.FAILED;
-          state.category = {};
-          state.categoryError = action.payload;
-        }
-      );
+    //Create Category
+    builder.addCase(createCategory.pending, (state) => {
+      state.createdCategoryStatus = STATUS.LOADING;
+      state.createdCategory = {};
+      state.createdCategoryError = null;
+    }),
+      builder.addCase(createCategory.fulfilled, (state, action) => {
+        state.createdCategoryStatus = STATUS.SUCCEEDED;
+        state.createdCategory = action.payload;
+        state.createdCategoryError = null;
+      }),
+      builder.addCase(createCategory.rejected, (state, action) => {
+        state.createdCategoryStatus = STATUS.FAILED;
+        state.createdCategory = {};
+        state.createdCategoryError = action.payload;
+      });
+
+    //Get Specific Category
+    builder.addCase(getSpecificCategory.pending, (state) => {
+      state.specificCategoryStatus = STATUS.LOADING;
+      state.specificCategory = {};
+      state.specificCategoryError = null;
+    }),
+      builder.addCase(getSpecificCategory.fulfilled, (state, action) => {
+        state.specificCategoryStatus = STATUS.SUCCEEDED;
+        state.specificCategory = action.payload;
+        state.specificCategoryError = null;
+      }),
+      builder.addCase(getSpecificCategory.rejected, (state, action) => {
+        state.specificCategoryStatus = STATUS.FAILED;
+        state.specificCategory = {};
+        state.specificCategoryError = action.payload;
+      });
 
     //Delete Product
     builder.addCase(deleteCategory.pending, (state) => {
@@ -137,12 +152,23 @@ export const allCategoriesError = (state) => state.categories.categoriesError;
 
 //Specific Category
 
-export const specificCategory = (state) => state.categories.category;
+export const specificCategory = (state) => state.categories.specificCategory;
 
 export const specificCategoryStatus = (state) =>
-  state.categories.categoryStatus;
+  state.categories.specificCategoryStatus;
 
-export const specificCategoryError = (state) => state.categories.categoryError;
+export const specificCategoryError = (state) =>
+  state.categories.specificCategoryError;
+
+//Created Category
+
+export const createdCategory = (state) => state.categories.createdCategory;
+
+export const createdCategoryStatus = (state) =>
+  state.categories.createdCategoryStatus;
+
+export const createdCategoryError = (state) =>
+  state.categories.createdCategoryError;
 
 //Delete Category
 

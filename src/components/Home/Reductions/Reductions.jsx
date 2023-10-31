@@ -7,12 +7,17 @@ function Reductions() {
   return (
     <Box sx={{ background: "#000", py: 10 }}>
       <Container
+        maxWidth={"lg"}
         sx={{
           height: "100%",
         }}
       >
-        <Grid container spacing={2} sx={{height: "100%", display: "flex", alignItems: "center"}}>
-          <Grid item xs={12} md = {6}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ height: "100%", display: "flex", alignItems: "center" }}
+        >
+          <Grid item xs={12} md={6}>
             <Box sx={{ color: "#fff" }}>
               <Typography
                 variant="h2"
@@ -25,10 +30,14 @@ function Reductions() {
                 بالإضافة إلى أفضل التحفيضات على المنتجات , تسوق الان واستمتع بكل
                 بالتخفيضات على المنتجات{" "}
               </Typography>
-              <CommonBtn width={"200px"} height={"56px"} text={"اكتشف المزيد"}/>
+              <CommonBtn
+                width={"200px"}
+                height={"56px"}
+                text={"اكتشف المزيد"}
+              />
             </Box>
           </Grid>
-          <Grid item xs={12} md = {6}>
+          <Grid item xs={12} md={6}>
             <Box sx={{ height: "100%" }}>
               <img src={lapImg} style={{ width: "100%", height: "100%" }} />
             </Box>

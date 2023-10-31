@@ -1,11 +1,10 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import MainTitle from "../../Utility/MainTitle";
-import PaginationComponent from "../../Utility/PaginationComponent";
 import MainDashboardContent from "../../Utility/MainDashboardContent";
 import { STATUS } from "../../../utils/status";
 import Loader from "../../Utility/Loader";
-import AdminCategoryCard from "./AdminCategoryCard";
+import AdminCategoryCard from "./AdminCategoryCard/AdminCategoryCard";
 function AdminAllCategories({ categories, categoriesStatus, categoriesError }) {
   return (
     <MainDashboardContent>
@@ -25,7 +24,13 @@ function AdminAllCategories({ categories, categoriesStatus, categoriesError }) {
                 borderRadius: "4px",
               }}
             >
-              <Typography variant="h5">{categoriesError}</Typography>
+              <Typography variant="h5">
+                {categoriesError?.errors
+                  ? categoriesError?.errors?.map((err) => err.msg)
+                  : categoriesError?.message
+                  ? categoriesError?.message
+                  : ""}
+              </Typography>
             </Box>
           ) : categories?.data?.length > 0 ? (
             categories?.data?.map((category) => (

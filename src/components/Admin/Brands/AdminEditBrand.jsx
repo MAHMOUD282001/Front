@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Box, Container, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MainTitle from "../../Utility/MainTitle";
 import CommonBtn from "../../Utility/CommonBtn";
 import MainDashboardContent from "../../Utility/MainDashboardContent";
 import { STATUS } from "../../../utils/status";
+import { Container, TextField } from "@material-ui/core";
 
 function AdminEditBrand({
   name,
@@ -13,12 +14,9 @@ function AdminEditBrand({
   brandStatus,
   handleBrandSubmit,
 }) {
-  
-  console.log(brandStatus);
-  
   return (
     <MainDashboardContent>
-      <Container>
+      <Container maxWidth={"lg"}>
         <MainTitle title={"تعديل ماركه"} />
 
         <Typography
@@ -64,6 +62,7 @@ function AdminEditBrand({
             <TextField
               margin="none"
               fullWidth
+              variant="outlined"
               required
               InputLabelProps={{
                 style: {

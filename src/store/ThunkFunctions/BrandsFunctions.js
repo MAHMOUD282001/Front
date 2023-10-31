@@ -1,9 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import useGetData from "../../hooks/useGetData";
-import {
-  useInsertData,
-  useInsertDataWithImages,
-} from "../../hooks/useInsertData";
+import { useInsertData } from "../../hooks/useInsertData";
 import useDeleteData from "../../hooks/useDeleteData";
 import { useUpdateDataContainsImages } from "../../hooks/useUpdateData";
 
@@ -34,10 +31,10 @@ export const getBrandsPage = createAsyncThunk(
   }
 );
 
-//Create Category
+//Create Brand
 
 export const createBrand = createAsyncThunk(
-  "post brand",
+  "post/brand",
   (formData, thunkAPI) => {
     let response = useInsertData(`/api/v1/brands`, formData, thunkAPI);
     return response;
@@ -47,7 +44,7 @@ export const createBrand = createAsyncThunk(
 //Get Specific Brand
 
 export const getSpecificBrand = createAsyncThunk(
-  "fetch brand",
+  "fetch/brand",
   (id, thunkAPI) => {
     let response = useGetData(`/api/v1/brands/${id}`, undefined, thunkAPI);
     return response;
@@ -72,7 +69,11 @@ export const deleteBrand = createAsyncThunk(
 export const updateBrand = createAsyncThunk(
   "update/brand",
   ({ id, formData }, thunkAPI) => {
-    let response = useUpdateDataContainsImages(`/api/v1/brands/${id}`, formData, thunkAPI);
+    let response = useUpdateDataContainsImages(
+      `/api/v1/brands/${id}`,
+      formData,
+      thunkAPI
+    );
     return response;
   }
 );

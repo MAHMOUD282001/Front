@@ -9,6 +9,7 @@ import {
   getAllProductsSearch,
   getProductsPage,
   getSpecificProduct,
+  getSpecificProductsByBrand,
   getSpecificProductsByCategory,
 } from "./ThunkFunctions/ProductsFunctions";
 
@@ -17,6 +18,16 @@ const initialState = {
   products: [],
   productsStatus: STATUS.IDLE,
   productsError: null,
+
+  //Get Products By Category
+  specificProductsByCategory: [],
+  specificProductsByCategoryStatus: STATUS.IDLE,
+  specificProductsByCategoryError: null,
+
+  //Get Products By Brand
+  specificProductsByBrand: [],
+  specificProductsByBrandStatus: STATUS.IDLE,
+  specificProductsByBrandError: null,
 
   //Specific Product
   specificProduct: {},
@@ -44,6 +55,7 @@ const ProductsSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.productsStatus = STATUS.IDLE;
+      state.specificProductsByCategoryStatus = STATUS.IDLE;
       state.specificProductStatus = STATUS.IDLE;
       state.deletedProductStatus = STATUS.IDLE;
       state.addedProductStatus = STATUS.IDLE;
@@ -55,7 +67,6 @@ const ProductsSlice = createSlice({
     // Get Products
     builder.addCase(
       getAllProducts.pending ||
-        getSpecificProductsByCategory.pending ||
         getProductsPage.pending ||
         getAllProductsSearch.pending,
       (state) => {
@@ -66,7 +77,6 @@ const ProductsSlice = createSlice({
     ),
       builder.addCase(
         getAllProducts.fulfilled ||
-          getSpecificProductsByCategory.fulfilled ||
           getProductsPage.fulfilled ||
           getAllProductsSearch.fulfilled,
         (state, action) => {
@@ -77,7 +87,6 @@ const ProductsSlice = createSlice({
       ),
       builder.addCase(
         getAllProducts.rejected ||
-          getSpecificProductsByCategory.rejected ||
           getProductsPage.rejected ||
           getAllProductsSearch.rejected,
         (state, action) => {
@@ -86,6 +95,46 @@ const ProductsSlice = createSlice({
           state.productsError = action.payload;
         }
       );
+
+    // Get Products By Category
+    builder.addCase(getSpecificProductsByCategory.pending, (state) => {
+      state.specificProductsByCategoryStatus = STATUS.LOADING;
+      state.specificProductsByCategory = [];
+      state.productsError = null;
+    }),
+      builder.addCase(
+        getSpecificProductsByCategory.fulfilled,
+        (state, action) => {
+          state.specificProductsByCategoryStatus = STATUS.SUCCEEDED;
+          state.specificProductsByCategory = action.payload;
+          state.specificProductsByCategoryError = null;
+        }
+      ),
+      builder.addCase(
+        getSpecificProductsByCategory.rejected,
+        (state, action) => {
+          state.specificProductsByCategoryStatus = STATUS.FAILED;
+          state.specificProductsByCategory = [];
+          state.specificProductsByCategoryError = action.payload;
+        }
+      );
+
+    // Get Products By Brand
+    builder.addCase(getSpecificProductsByBrand.pending, (state) => {
+      state.specificProductsByBrandStatus = STATUS.LOADING;
+      state.specificProductsByBrand = [];
+      state.specificProductsByBrandError = null;
+    }),
+      builder.addCase(getSpecificProductsByBrand.fulfilled, (state, action) => {
+        state.specificProductsByBrandStatus = STATUS.SUCCEEDED;
+        state.specificProductsByBrand = action.payload;
+        state.specificProductsByBrandError = null;
+      }),
+      builder.addCase(getSpecificProductsByBrand.rejected, (state, action) => {
+        state.specificProductsByBrandStatus = STATUS.FAILED;
+        state.specificProductsByBrand = [];
+        state.specificProductsByBrandError = action.payload;
+      });
 
     //Get Specific Product
     builder.addCase(getSpecificProduct.pending, (state) => {
@@ -158,6 +207,22 @@ const ProductsSlice = createSlice({
 export const allProducts = (state) => state.products.products;
 export const allProductsStatus = (state) => state.products.productsStatus;
 export const allProductsError = (state) => state.products.productsError;
+
+//Get Products By Category
+export const specificProductsByCategory = (state) =>
+  state.products.specificProductsByCategory;
+export const specificProductsByCategoryStatus = (state) =>
+  state.products.specificProductsByCategoryStatus;
+export const specificProductsByCategoryError = (state) =>
+  state.products.specificProductsByCategoryError;
+
+//Get Products By Brand
+export const specificProductsByBrand = (state) =>
+  state.products.specificProductsByBrand;
+export const specificProductsByBrandStatus = (state) =>
+  state.products.specificProductsByBrandStatus;
+export const specificProductsByBrandError = (state) =>
+  state.products.specificProductsByBrandError;
 
 //Get Specific Product
 export const specificProduct = (state) => state.products.specificProduct;

@@ -1,4 +1,4 @@
-import baseUrl from "../api/baseUrl";
+import baseUrl from "../utils/baseUrl";
 
 const useInsertDataWithImages = async (url, parmas, thunkAPI) => {
   try {

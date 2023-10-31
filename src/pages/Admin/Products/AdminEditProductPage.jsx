@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import React from 'react'
 import AdminSidebar from '../../../components/Admin/AdminSidebar'
-import AdminEditProduct from '../../../components/Admin/Products/AdminEditProduct'
+import AdminEditProduct from '../../../components/Admin/Products/AdminEditProduct/AdminEditProduct'
 
 function AdminEditProductPage() {
   return (

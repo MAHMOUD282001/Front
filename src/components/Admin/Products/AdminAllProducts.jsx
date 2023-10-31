@@ -1,13 +1,13 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MainTitle from "../../Utility/MainTitle";
 import MainDashboardContent from "../../Utility/MainDashboardContent";
 import { STATUS } from "../../../utils/status";
 import Loader from "../../Utility/Loader";
-import AdminProductCard from "./AdminProductCard";
+import AdminProductCard from "./AdminProductCard/AdminProductCard";
+import { Container, Grid } from "@material-ui/core";
 
-function AdminAllProducts({products, productsStatus, productsError}) {
-
+function AdminAllProducts({ products, productsStatus, productsError }) {
   return (
     <MainDashboardContent>
       <Container>
@@ -26,7 +26,13 @@ function AdminAllProducts({products, productsStatus, productsError}) {
                 borderRadius: "4px",
               }}
             >
-              <Typography variant="h5">{productsError}</Typography>
+              <Typography variant="h5">
+                {productsError?.errors
+                  ? productsError?.errors?.map((err) => err.msg)
+                  : productsError?.message
+                  ? productsError?.message
+                  : ""}
+              </Typography>
             </Box>
           ) : products?.data?.length > 0 ? (
             products?.data?.map((product) => (

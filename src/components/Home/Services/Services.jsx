@@ -1,9 +1,10 @@
-import { Box, Container, Grid, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Paper } from "@mui/material";
 import React from "react";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import Service from "./Service";
+import { Container, useTheme } from "@material-ui/core";
 
 function Services() {
   let theme = useTheme();
@@ -32,7 +33,7 @@ function Services() {
 
   return (
     <Box>
-      <Container>
+      <Container maxWidth={"lg"}>
         <Paper sx={{ p: 4, my: 10 }}>
           <Grid container spacing={2}>
             {servicesItems.map((servicesItem, index) => (

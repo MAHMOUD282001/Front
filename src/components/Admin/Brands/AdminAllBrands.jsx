@@ -4,12 +4,12 @@ import MainTitle from "../../Utility/MainTitle";
 import MainDashboardContent from "../../Utility/MainDashboardContent";
 import { STATUS } from "../../../utils/status";
 import Loader from "../../Utility/Loader";
-import AdminBrandCard from "./AdminBrandCard";
+import AdminBrandCard from "./AdminBrandCard/AdminBrandCard";
 function AdminAllBrands({ brands, brandsStatus, brandsError }) {
   return (
     <MainDashboardContent>
       <Container>
-        <MainTitle title={"ادارة جميع التصنيفات الرئيسيه"} />
+        <MainTitle title={"ادارة جميع الماركات"} />
 
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           {brandsStatus === STATUS.LOADING ? (
@@ -24,7 +24,13 @@ function AdminAllBrands({ brands, brandsStatus, brandsError }) {
                 borderRadius: "4px",
               }}
             >
-              <Typography variant="h5">{brandsError}</Typography>
+              <Typography variant="h5">
+                {brandsError?.errors
+                  ? brandsError?.errors?.map((err) => err.msg)
+                  : brandsError?.message
+                  ? brandsError?.message
+                  : ""}
+              </Typography>
             </Box>
           ) : brands?.data?.length > 0 ? (
             brands?.data?.map((brand) => (

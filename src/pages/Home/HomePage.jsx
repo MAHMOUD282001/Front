@@ -1,14 +1,27 @@
 import Services from "../../components/Home/Services/Services";
 import Reductions from "../../components/Home/Reductions/Reductions";
 import Slider from "../../components/Home/Slider/Slider";
-import Products from "../../components/Products/Products";
+import Products from "../../components/Products/Products/Products";
 import HomeBrands from "../../components/Home/HomeBrands/HomeBrands";
-import HomeProductsHook from "../../Logic/Home/HomeProductsHook";
+import TopRatingsProductsLogic from "./TopRatingsProductsLogic";
 import HomeCategories from "../../components/Home/HomeCategories/HomeCategories";
+import TopSoldProductsLogic from "./TopSoldProductsLogic";
+import { useEffect } from "react";
+import { getCartItems } from "../../store/ThunkFunctions/CartFunctions";
+import { useDispatch } from "react-redux";
 
 function HomePage() {
-  let [products, productsStatus, productsError] = HomeProductsHook();
+  let [topSoldProducts, topSoldProductsStatus, topSoldProductsError] =
+    TopSoldProductsLogic();
 
+  let [topRatingsProducts, topRatingsProductsStatus, topRatingsProductsError] =
+    TopRatingsProductsLogic();
+
+  let dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, []);
 
   return (
     <div>
@@ -23,9 +36,9 @@ function HomePage() {
         desc="اليك اكثر المنتجات مبيعا"
         btnText="عرض الكل"
         path="/products"
-        products={products}
-        productsStatus={productsStatus}
-        productsError={productsError}
+        products={topSoldProducts?.data}
+        productsStatus={topSoldProductsStatus}
+        productsError={topSoldProductsError}
         lg={3}
         md={4}
         sm={6}
@@ -33,18 +46,18 @@ function HomePage() {
 
       <Reductions />
 
-      {/* <Products
+      <Products
         title="الاعلى تقييما"
         desc="اليك اعلى المنتجات تقييما"
         btnText="عرض الكل"
         path="/products"
-        products={products}
-        productsStatus={productsStatus}
-        productsError={productsError}
+        products={topRatingsProducts?.data}
+        productsStatus={topRatingsProductsStatus}
+        productsError={topRatingsProductsError}
         lg={3}
         md={4}
         sm={6}
-      /> */}
+      />
 
       <HomeBrands
         title={"البراندات"}

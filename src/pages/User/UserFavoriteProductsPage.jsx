@@ -1,7 +1,7 @@
 import React from 'react'
 import UserSidebar from '../../components/User/UserSidebar'
-import UserFavoriteProducts from '../../components/User/Favorite/UserFavoriteProducts'
 import { Box } from '@mui/material'
+import UserFavoriteProducts from '../../components/User/Favorite/UserFavoriteProducts/UserFavoriteProducts'
 
 function UserFavoriteProductsPage() {
   return (

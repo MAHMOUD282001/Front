@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   button: {
     backgroundColor: "#62D0B6!important",
     color: "#fff!important",
-    transition: "hover .5s!important",
+    transition: "background .5s!important",
     borderRadius: "4px!important",
     "&:hover": {
       backgroundColor: "#fff!important",
@@ -23,7 +23,17 @@ const useStyles = makeStyles({
   },
 });
 
-function CommonBtn({ width, height, mt, mb, text, path, loading, type }) {
+function CommonBtn({
+  width,
+  height,
+  mt,
+  mb,
+  text,
+  path,
+  loading,
+  type,
+  handleOnClick,
+}) {
   const classes = useStyles();
 
   let navigate = useNavigate();
@@ -34,7 +44,7 @@ function CommonBtn({ width, height, mt, mb, text, path, loading, type }) {
           type={type}
           sx={{ width: width, height: height, mt: mt, mb: mb }}
           className={classes.button}
-          onClick={() => navigate(path)}
+          onClick={path ? () => navigate(path) : handleOnClick}
         >
           {text}
         </Button>

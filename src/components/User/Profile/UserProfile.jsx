@@ -1,10 +1,8 @@
 import { Container } from "@mui/material";
-import UserProfileCard from "./UserProfileCard";
+import UserProfileCard from "./UserProfileCard/UserProfileCard";
 import MainTitle from "../../Utility/MainTitle";
-import UserPasswordChangeContent from "./UserPasswordChangeContent";
 import MainDashboardContent from "../../Utility/MainDashboardContent";
-
-
+import UserPasswordChangeContent from "./UserPasswordChangeContent/UserPasswordChangeContent";
 
 function UserProfile() {
   return (
@@ -12,7 +10,7 @@ function UserProfile() {
       <Container>
         <MainTitle title={"الملف الشخصى"} />
         <UserProfileCard />
-        
+
         <UserPasswordChangeContent />
       </Container>
     </MainDashboardContent>

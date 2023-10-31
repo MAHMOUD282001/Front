@@ -1,4 +1,4 @@
-import baseUrl from "../api/baseUrl";
+import baseUrl from "../utils/baseUrl";
 
 const useDeleteData = async (url, parmas, thunkAPI) => {
   try {

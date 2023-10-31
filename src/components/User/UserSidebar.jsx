@@ -10,18 +10,22 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useContext } from "react";
-import { Avatar, IconButton, useTheme } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import avatarImg from "../../assets/avatarImg.png";
 import {
   Category,
   ChevronRight,
+  Favorite,
   LibraryAdd,
   ManageHistory,
+  Person,
   Settings,
+  StreamTwoTone,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { grey } from "@mui/material/colors";
 import { sidebarContext } from "../../context/SidebarContext";
+import { useTheme } from "@material-ui/core";
 
 const drawerWidth = 240;
 
@@ -38,14 +42,13 @@ export default function UserSidebar() {
   const { open, handleDrawerClose } = useContext(sidebarContext);
   let theme = useTheme();
 
-
   let navigate = useNavigate();
 
   let dashboardItems = [
+    { name: "الملف الشخصى", icon: <Person />, path: "/user/profile" },
+    { name: "العناوين الشخصيه", icon: <StreamTwoTone />, path: "/user/addresses" },
     { name: "ادارة الطلبات", icon: <ManageHistory />, path: "/user/allOrders" },
-    { name: "قائمة المفضله", icon: <Settings />, path: "/user/favorite" },
-    { name: "العناوين الشخصيه", icon: <LibraryAdd />, path: "/user/addresses" },
-    { name: "الملف الشخصى", icon: <Category />, path: "/user/profile" },
+    { name: "قائمة المفضله", icon: <Favorite />, path: "/user/favorite" },
   ];
 
   return (
@@ -129,31 +132,31 @@ export default function UserSidebar() {
       <List>
         {dashboardItems.slice(2).map((dashboardItem, index) => (
           <ListItem key={index} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => navigate(dashboardItem.path)}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-              bgcolor:
-                location.pathname === dashboardItem.path ? grey[200] : "",
-            }}
-          >
-            <ListItemIcon
+            <ListItemButton
+              onClick={() => navigate(dashboardItem.path)}
               sx={{
-                minWidth: 0,
-                ml: open ? 3 : "auto",
-                justifyContent: "center",
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                bgcolor:
+                  location.pathname === dashboardItem.path ? grey[200] : "",
               }}
             >
-              {dashboardItem.icon}
-            </ListItemIcon>
-            <ListItemText
-              primary={dashboardItem.name}
-              sx={{ opacity: open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  ml: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                {dashboardItem.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={dashboardItem.name}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
     </Drawer>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
 import UserSidebar from "../../components/User/UserSidebar";
-import UserEditAddress from "../../components/User/Addresses/UserEditAddress";
 import UserProfile from "../../components/User/Profile/UserProfile";
 
 function UserProfilePage() {

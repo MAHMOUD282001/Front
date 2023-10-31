@@ -1,6 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MainTitle from "../../Utility/MainTitle";
-import brand from "../../../assets/brand1.png";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,14 +8,15 @@ import "swiper/css/navigation";
 import BrandCard from "../../Brands/BrandCard";
 import { STATUS } from "../../../utils/status";
 import Loader from "../../Utility/Loader";
-import HomeBrandsHook from "../../../Logic/Home/HomeBrandsHook";
+import HomeBrandsLogic from "./HomeBrandsLogic";
+import { Container } from "@material-ui/core";
 
 function HomeBrands({ title, desc, btnText, path }) {
-  let [brands, brandsStatus, brandsError] = HomeBrandsHook();
+  let [brands, brandsStatus, brandsError] = HomeBrandsLogic();
 
   return (
     <Box sx={{ my: 5 }}>
-      <Container>
+      <Container maxWidth={"lg"}>
         <MainTitle title={title} desc={desc} btnText={btnText} path={path} />
 
         {brandsStatus === STATUS.LOADING ? (
@@ -31,7 +31,13 @@ function HomeBrands({ title, desc, btnText, path }) {
               borderRadius: "4px",
             }}
           >
-            <Typography variant="h5">{brandsError}</Typography>
+            <Typography variant="h5">
+              {brandsError?.errors
+                ? brandsError?.errors?.map((err) => err.msg)
+                : brandsError?.message
+                ? brandsError?.message
+                : ""}
+            </Typography>
           </Box>
         ) : brands.data?.length === 0 ? (
           <Box
@@ -86,7 +92,7 @@ function HomeBrands({ title, desc, btnText, path }) {
                 key={brand._id}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <BrandCard brand={brand.image} />
+                <BrandCard brand={brand.image} id={brand._id}/>
               </SwiperSlide>
             ))}
           </Swiper>

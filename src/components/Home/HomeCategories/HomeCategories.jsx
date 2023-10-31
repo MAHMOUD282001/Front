@@ -1,17 +1,17 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import MainTitle from "../../Utility/MainTitle";
 import CategoryCard from "../../Categories/CategoryCard";
 import Loader from "../../Utility/Loader";
 import { STATUS } from "../../../utils/status";
-import HomeCategoriesHook from "../../../Logic/Home/HomeCategoriesHook";
+import HomeCategoriesLogic from "./HomeCategoriesLogic";
+import { Container } from "@material-ui/core";
 
 function HomeCategories() {
-  let [categories, categoriesStatus, categoriesError] = HomeCategoriesHook();
-  
-  
+  let [categories, categoriesStatus, categoriesError] = HomeCategoriesLogic();
+
   return (
     <Box className="special-products" sx={{ my: 5 }}>
-      <Container>
+      <Container maxWidth={"lg"}>
         <MainTitle
           title={"تسوق حسب الفئات"}
           desc={"تسوق احدث المنتجات المميزة المضافة جديد"}
@@ -31,7 +31,13 @@ function HomeCategories() {
                 borderRadius: "4px",
               }}
             >
-              <Typography variant="h5">{categoriesError}</Typography>
+              <Typography variant="h5">
+                {categoriesError?.errors
+                  ? categoriesError?.errors?.map((err) => err.msg)
+                  : categoriesError?.message
+                  ? categoriesError?.message
+                  : ""}
+              </Typography>
             </Box>
           ) : categories.data?.length > 0 ? (
             categories.data
@@ -54,6 +60,7 @@ function HomeCategories() {
                   <CategoryCard
                     title={categoryItem.name}
                     img={categoryItem.image}
+                    id={categoryItem._id}
                   />
                 </Grid>
               ))

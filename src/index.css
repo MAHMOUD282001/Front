@@ -18,7 +18,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  user-select: none!important;
+  user-select: none !important;
 }
 
 input::placeholder,
@@ -54,11 +54,12 @@ a {
   color: #333333;
   border: 1px solid #eeeeee;
   cursor: pointer;
-  border-radius: 2px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
   transition: all 0.5s ease-in-out;
+  border-radius: 4px;
 }
 
 .products button:hover,
@@ -86,7 +87,6 @@ a {
   justify-content: space-around;
 }
 
-
 .MuiPagination-root ul {
   justify-content: center;
   margin-top: 20px;
@@ -110,6 +110,7 @@ a {
   left: 85% !important;
   top: 30px !important;
   color: #666666 !important;
+  z-index: 901 !important;
 }
 
 .drop-down-menu_EMFQP div {
@@ -264,42 +265,42 @@ a {
   height: 100%;
 }
 
-
-.image-item img{
+.image-item img {
   border-radius: 5px;
   width: 200px;
   height: 200px;
   object-fit: cover;
 }
 
-/* Any Input Label */
-/* 
-label{
-  left: unset!important;
-  right: 25px;
-}
-
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  padding: 0 25px!important;
-  text-align: right!important;
-} */
-
-
-/*
-label.Mui-focused{
-  right: unset!important;
-} */
-
-
-
 /* SideBar */
-.css-1lcm82m-MuiDrawer-docked {
-  z-index: 2!important;
+.MuiPaper-root {
+  z-index: 1000 !important;
 }
-
 
 /* Modal Stars */
 
-.modal-stars div{
-  justify-content: center!important;
+.modal-stars div {
+  justify-content: center !important;
+}
+
+/* Toast */
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container--top-left,
+  .Toastify__toast-container--top-center,
+  .Toastify__toast-container--top-right {
+    top: 1rem !important;
+    transform: unset !important;
+    direction: rtl!important;
+  }
+
+  .Toastify__toast-container {
+    width: var(--toastify-toast-width) !important;
+    direction: rtl!important;
+  }
+  
+  .Toastify__toast {
+    border-radius: 4px!important;
+    direction: rtl!important;
+  }
 }
